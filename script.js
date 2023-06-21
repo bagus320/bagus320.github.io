@@ -17,6 +17,9 @@ function hitung() {
   } else if (unitCount == "percent") {
     result = (dl * 100) / dm;
     result = result.toFixed(2) + " %";
+  } else if (unitCount == "month") {
+    result = (factor * dm) / 150;
+    result = result.toFixed(2) + " Mg";
   } else {
     result = "000";
   }
