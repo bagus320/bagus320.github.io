@@ -26,3 +26,19 @@ function hitung() {
   const resultElement = document.getElementById("result");
   resultElement.innerHTML = result;
 }
+// Fungsi Untuk Menjalankan Mode Gelap
+function toggleDarkMode() {
+  const body = document.body;
+  body.classList.toggle("dark-mode");
+  const darkModeToggle = document.getElementById("darkModeToggle");
+  darkModeToggle.checked = body.classList.contains("dark-mode");
+}
+const darkModeToggle = document.getElementById("darkModeToggle");
+darkModeToggle.addEventListener("change", toggleDarkMode);
+
+if (
+  window.matchMedia &&
+  window.matchMedia("(prefers-color-scheme: dark)").matches
+) {
+  toggleDarkMode();
+}
