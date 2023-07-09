@@ -3,7 +3,7 @@ html {
   padding: 0;
 }
 body {
-  transition: 0.2s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 body .dark-mode-toggle {
   text-align: center;
@@ -165,6 +165,26 @@ body .dark-mode-toggle {
   margin-top: 30px;
   border: 2px solid #181717;
   border-radius: 10px;
+  transition: 0.3s ease-in-out;
+}
+body .dose_calc .statement-box {
+  padding: 3px;
+  border-radius: 10px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+  transition: 0.3s ease-in-out;
+}
+body .dose_calc .statement-box #result-statement {
+  font-weight: 600;
+  font-size: 20px;
+}
+.dark-mode .dose_calc .statement-box #result-statement {
+  color: #f5f5f5;
+}
+.dark-mode .dose_calc .statement-box {
   transition: 0.3s ease-in-out;
 }
 .dark-mode #result {

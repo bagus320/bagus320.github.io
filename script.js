@@ -4,6 +4,8 @@ function hitung() {
   const unitCount = document.getElementById("unitCount").value;
   let factor = document.getElementById("factor").value;
   let result;
+  let resultStatement;
+  let fixedResult;
 
   if (unitCount == "under8") {
     result = (factor * dm) / (parseInt(factor) + 12);
@@ -17,14 +19,28 @@ function hitung() {
   } else if (unitCount == "percent") {
     result = (dl * 100) / dm;
     result = result.toFixed(2) + " %";
+
+    fixedResult = parseFloat(result.replace("%", ""));
+
+    if (fixedResult > 100) {
+      resultStatement = "Overdosis Cokk!!";
+    } else if (fixedResult >= 80 && fixedResult <= 100) {
+      resultStatement = "Bolehlah";
+    } else if (fixedResult < 79) {
+      resultStatement = "Kurang Dosis!!";
+    } else {
+      resultStatement = "kosong njirr";
+    }
   } else if (unitCount == "month") {
     result = (factor * dm) / 150;
     result = result.toFixed(2) + " Mg";
   } else {
-    result = "000";
+    result = "Jangan dikosongin lahh";
   }
   const resultElement = document.getElementById("result");
-  resultElement.innerHTML = result;
+  resultElement.innerText = result;
+  const resultStatementOutput = document.getElementById("result-statement");
+  resultStatementOutput.innerText = resultStatement;
 }
 // Fungsi Untuk Menjalankan Mode Gelap
 function toggleDarkMode() {
