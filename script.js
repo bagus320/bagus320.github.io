@@ -3,6 +3,8 @@ function hitung() {
   const dm = document.getElementById("dm").value;
   const unitCount = document.getElementById("unitCount").value;
   let factor = document.getElementById("factor").value;
+  const resultElement = document.getElementById("result");
+
   let result;
   let resultStatement;
   let fixedResult;
@@ -19,9 +21,7 @@ function hitung() {
   } else if (unitCount == "percent") {
     result = (dl * 100) / dm;
     result = result.toFixed(2) + " %";
-
     fixedResult = parseFloat(result.replace("%", ""));
-
     if (fixedResult > 100) {
       resultStatement = "Overdosis Cokk!!";
     } else if (fixedResult >= 80 && fixedResult <= 100) {
@@ -31,30 +31,40 @@ function hitung() {
     } else {
       resultStatement = "kosong njirr";
     }
+    const resultStatementOutput = document.getElementById("result-statement");
+    resultStatementOutput.innerText = resultStatement;
   } else if (unitCount == "month") {
     result = (factor * dm) / 150;
     result = result.toFixed(2) + " Mg";
   } else {
-    result = "Jangan dikosongin lahh";
+    result = "000";
   }
-  const resultElement = document.getElementById("result");
-  resultElement.innerText = result;
-  const resultStatementOutput = document.getElementById("result-statement");
-  resultStatementOutput.innerText = resultStatement;
+  fixedResult = parseFloat(result.replace("%", ""));
+  if (fixedResult >= 0) {
+    resultElement.innerText = result;
+  } else {
+    resultElement.innerText = "Diisi dongg!!";
+  }
+  const statementOutput = document.getElementById("result-statement");
+  if (unitCount != "percent") {
+    statementOutput.style.display = "none";
+  } else {
+    statementOutput.style.display = "block";
+  }
 }
-// Fungsi Untuk Menjalankan Mode Gelap
-function toggleDarkMode() {
-  const body = document.body;
-  body.classList.toggle("dark-mode");
-  const darkModeToggle = document.getElementById("darkModeToggle");
-  darkModeToggle.checked = body.classList.contains("dark-mode");
-}
-const darkModeToggle = document.getElementById("darkModeToggle");
-darkModeToggle.addEventListener("change", toggleDarkMode);
 
+function toggleDarkTheme() {
+  let icon = document.getElementById("sun-icon");
+  document.body.classList.toggle("dark-theme");
+  if (document.body.classList.contains("dark-theme")) {
+    icon.src = "assets/moon.png";
+  } else {
+    icon.src = "assets/sun.png";
+  }
+}
 if (
   window.matchMedia &&
-  window.matchMedia("(prefers-color-scheme: dark)").matches
+  window.matchMedia("(prefers-color-scheme:dark)").matches
 ) {
-  toggleDarkMode();
+  toggleDarkTheme();
 }

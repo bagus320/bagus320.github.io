@@ -3,9 +3,41 @@ html {
   padding: 0;
 }
 body {
+  background-color: var(--primary-wall);
+}
+:root {
+  --primary-background: rgb(217, 233, 230);
+  --primary-wall: #f5f5f5;
+  --secondary-color: #141414;
+  --input-color: white;
+  --text-color: #141414;
+  --border-color: #312e2e;
+}
+.dark-theme {
+  --primary-wall: #1d1c1c;
+  --primary-background: #131212;
+  --secondary-color: #f5f5f5;
+  --input-color: #333131;
+  --text-color: #f5f5f5;
+  --border-color: #f5f5f5;
+}
+:hover {
+  --background-color: #dddd;
+  --color: #011101;
+}
+.theme-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.theme-wrapper #sun-icon {
+  cursor: pointer;
+  border-radius: 50px;
+}
+body {
   transition: 0.3s ease-in-out;
 }
-body .dark-mode-toggle {
+/* body .dark-mode-toggle {
   text-align: center;
   padding: 2px;
   font-family: "Montserrat", sans-serif;
@@ -22,13 +54,14 @@ body .dark-mode-toggle {
 }
 .dark-mode .dark-mode-toggle {
   color: #f5f5f5;
-}
+} */
 .dose_calc {
   width: fit-content;
   height: fit-content;
   margin: 20px auto;
-  background-color: rgb(217, 233, 230);
-  color: #141414;
+  /* background-color: rgb(217, 233, 230); */
+  background-color: var(--primary-background);
+  color: var(--secondary-color);
   transition: 0.3s ease-in-out;
   padding: 20px;
   border: 5px solid;
@@ -54,16 +87,17 @@ body .dark-mode-toggle {
 #dl {
   width: 80%;
   border-radius: 9px;
-  border: solid 1px #312e2e;
+  border: solid 1px var(--border-color);
   height: 35px;
-  background-color: white;
+  background-color: var(--input-color);
+  color: var(--secondary-color);
   transition: 0.3s ease-in-out;
 }
-.dark-mode #dl {
+/* .dark-mode #dl {
   background-color: #333131;
   color: #f5f5f5;
   transition: 0.3s ease-in-out;
-}
+} */
 .max-dose {
   text-align: center;
   margin-bottom: 5px;
@@ -80,16 +114,17 @@ body .dark-mode-toggle {
   height: 35px;
   width: 80%;
   border-radius: 9px;
-  border: solid 1px #312e2e;
+  border: solid 1px var(--border-color);
   border: 1px solid;
-  background-color: white;
+  background-color: var(--input-color);
+  color: var(--secondary-color);
   transition: 0.3s ease-in-out;
 }
-.dark-mode #dm {
+/* .dark-mode #dm {
   background-color: #333131;
   color: #f5f5f5;
   transition: 0.3s ease-in-out;
-}
+} */
 .unit {
   text-align: center;
   margin-bottom: 4px;
@@ -101,17 +136,18 @@ body .dark-mode-toggle {
   padding: 5px;
   width: 60%;
   border-radius: 10px;
-  border: solid 1px #312e2e;
+  border: solid 1px var(--border-color);
   height: 40px;
   margin-bottom: 7px;
-  background-color: white;
+  background-color: var(--input-color);
+  color: var(--secondary-color);
   transition: 0.3s ease-in-out;
 }
-.dark-mode #unitCount {
+/* .dark-mode #unitCount {
   background-color: #333131;
   color: #f5f5f5;
   transition: 0.3s ease-in-out;
-}
+} */
 .unit-value {
   text-align: center;
   padding: 2px;
@@ -121,17 +157,18 @@ body .dark-mode-toggle {
   height: 40px;
   width: 80%;
   border-radius: 9px;
-  border: solid 1px #312e2e;
+  border: solid 1px var(--border-color);
   margin-top: 5px;
   border: 1px solid;
-  background-color: white;
+  background-color: var(--input-color);
+  color: var(--secondary-color);
   transition: 0.3s ease-in-out;
 }
-.dark-mode #factor {
+/* .dark-mode #factor {
   background-color: #333131;
   color: #f5f5f5;
   transition: 0.3s ease-in-out;
-}
+} */
 #btn_container {
   display: flex;
   justify-content: center;
@@ -144,27 +181,29 @@ body .dark-mode-toggle {
   padding: 10px;
   cursor: pointer;
   border-radius: 10px;
-  background-color: rgb(223, 216, 216);
+  background-color: var(--primary-background);
+  color: var(--secondary-color);
   transition: 0.2s ease-in-out;
 }
 #operation:hover {
+  background-color: var(--background-color);
+  color: var(--color);
+}
+/* .dark-mode #operation {
   background-color: #1b1010;
   color: #f5f5f5;
-}
-.dark-mode #operation {
-  background-color: #1b1010;
-  color: #f5f5f5;
-}
-.dark-mode #operation:hover {
+} */
+/* .dark-mode #operation:hover {
   background-color: rgb(223, 216, 216);
   color: #1b1010;
-}
+} */
 #result {
   text-align: center;
   font-size: 200%;
   margin-top: 30px;
-  border: 2px solid #181717;
+  border: 2px solid var(--border-color);
   border-radius: 10px;
+  color: var(--text-color);
   transition: 0.3s ease-in-out;
 }
 body .dose_calc .statement-box {
@@ -180,14 +219,15 @@ body .dose_calc .statement-box {
 body .dose_calc .statement-box #result-statement {
   font-weight: 600;
   font-size: 20px;
+  color: var(--text-color);
 }
-.dark-mode .dose_calc .statement-box #result-statement {
+/* .dark-mode .dose_calc .statement-box #result-statement {
   color: #f5f5f5;
-}
-.dark-mode .dose_calc .statement-box {
+} */
+/* .dark-mode .dose_calc .statement-box {
   transition: 0.3s ease-in-out;
 }
 .dark-mode #result {
   border: 2px solid #f5f5f5;
   transition: 0.3s ease-in-out;
-}
+} */
