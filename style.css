@@ -37,29 +37,11 @@ body {
 body {
   transition: 0.3s ease-in-out;
 }
-/* body .dark-mode-toggle {
-  text-align: center;
-  padding: 2px;
-  font-family: "Montserrat", sans-serif;
-  font-size: 17px;
-}
-.dark-mode {
-  background-color: #1d1c1c;
-  transition: 0.3s ease-in-out;
-}
-.dark-mode .dose_calc {
-  background-color: #131212;
-  color: #f5f5f5;
-  transition: 0.3s ease-in-out;
-}
-.dark-mode .dark-mode-toggle {
-  color: #f5f5f5;
-} */
+
 .dose_calc {
   width: fit-content;
   height: fit-content;
   margin: 20px auto;
-  /* background-color: rgb(217, 233, 230); */
   background-color: var(--primary-background);
   color: var(--secondary-color);
   transition: 0.3s ease-in-out;
@@ -93,11 +75,6 @@ body {
   color: var(--secondary-color);
   transition: 0.3s ease-in-out;
 }
-/* .dark-mode #dl {
-  background-color: #333131;
-  color: #f5f5f5;
-  transition: 0.3s ease-in-out;
-} */
 .max-dose {
   text-align: center;
   margin-bottom: 5px;
@@ -120,11 +97,6 @@ body {
   color: var(--secondary-color);
   transition: 0.3s ease-in-out;
 }
-/* .dark-mode #dm {
-  background-color: #333131;
-  color: #f5f5f5;
-  transition: 0.3s ease-in-out;
-} */
 .unit {
   text-align: center;
   margin-bottom: 4px;
@@ -143,11 +115,6 @@ body {
   color: var(--secondary-color);
   transition: 0.3s ease-in-out;
 }
-/* .dark-mode #unitCount {
-  background-color: #333131;
-  color: #f5f5f5;
-  transition: 0.3s ease-in-out;
-} */
 .unit-value {
   text-align: center;
   padding: 2px;
@@ -164,11 +131,7 @@ body {
   color: var(--secondary-color);
   transition: 0.3s ease-in-out;
 }
-/* .dark-mode #factor {
-  background-color: #333131;
-  color: #f5f5f5;
-  transition: 0.3s ease-in-out;
-} */
+
 #btn_container {
   display: flex;
   justify-content: center;
@@ -189,14 +152,7 @@ body {
   background-color: var(--background-color);
   color: var(--color);
 }
-/* .dark-mode #operation {
-  background-color: #1b1010;
-  color: #f5f5f5;
-} */
-/* .dark-mode #operation:hover {
-  background-color: rgb(223, 216, 216);
-  color: #1b1010;
-} */
+
 #result {
   text-align: center;
   font-size: 200%;
@@ -221,13 +177,3 @@ body .dose_calc .statement-box #result-statement {
   font-size: 20px;
   color: var(--text-color);
 }
-/* .dark-mode .dose_calc .statement-box #result-statement {
-  color: #f5f5f5;
-} */
-/* .dark-mode .dose_calc .statement-box {
-  transition: 0.3s ease-in-out;
-}
-.dark-mode #result {
-  border: 2px solid #f5f5f5;
-  transition: 0.3s ease-in-out;
-} */
