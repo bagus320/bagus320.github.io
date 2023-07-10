@@ -31,8 +31,6 @@ function hitung() {
     } else {
       resultStatement = "kosong njirr";
     }
-    const resultStatementOutput = document.getElementById("result-statement");
-    resultStatementOutput.innerText = resultStatement;
   } else if (unitCount == "month") {
     result = (factor * dm) / 150;
     result = result.toFixed(2) + " Mg";
@@ -43,13 +41,14 @@ function hitung() {
   if (fixedResult >= 0) {
     resultElement.innerText = result;
   } else {
-    resultElement.innerText = "Diisi dongg!!";
+    resultElement.innerText = "Diisi yang benerr!!";
   }
-  const statementOutput = document.getElementById("result-statement");
+  const resultStatementOutput = document.getElementById("result-statement");
+  resultStatementOutput.innerText = resultStatement;
   if (unitCount != "percent") {
-    statementOutput.style.display = "none";
+    resultStatementOutput.style.display = "none";
   } else {
-    statementOutput.style.display = "block";
+    resultStatementOutput.style.display = "block";
   }
 }
 
