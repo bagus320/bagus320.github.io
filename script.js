@@ -58,7 +58,7 @@ function toggleDarkTheme() {
   if (document.body.classList.contains("dark-theme")) {
     icon.src = "assets/moon.png";
   } else {
-    icon.src = "assets/sun.png";
+    icon.src = "assets/sun_drawing.png";
   }
 }
 if (
