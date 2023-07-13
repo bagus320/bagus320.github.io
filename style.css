@@ -1,6 +1,7 @@
 html {
   margin: 0;
   padding: 0;
+  min-height: 750px;
 }
 body {
   background-color: var(--primary-wall);
@@ -176,4 +177,11 @@ body .dose_calc .statement-box #result-statement {
   font-weight: 600;
   font-size: 20px;
   color: var(--text-color);
+}
+body .dose_calc #watermark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Pacifico', cursive;
+  font-size: 25px;
 }
