@@ -13,6 +13,7 @@ body {
   --input-color: white;
   --text-color: #141414;
   --border-color: #312e2e;
+  --animate-duration: 2s;
 }
 .dark-theme {
   --primary-wall: #1d1c1c;
@@ -180,6 +181,7 @@ body .dose_calc .statement-box #result-statement {
 }
 .wm-container {
   text-align: center;
+  margin-top: 10px;
 }
 body .dose_calc #watermark {
   display: inline-block;

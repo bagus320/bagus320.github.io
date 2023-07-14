@@ -1,13 +1,13 @@
+let result;
+let resultStatement;
+let fixedResult;
+
 function hitung() {
   const dl = document.getElementById("dl").value;
   const dm = document.getElementById("dm").value;
   const unitCount = document.getElementById("unitCount").value;
   let factor = document.getElementById("factor").value;
   const resultElement = document.getElementById("result");
-
-  let result;
-  let resultStatement;
-  let fixedResult;
 
   if (unitCount == "under8") {
     result = (factor * dm) / (parseInt(factor) + 12);
@@ -55,10 +55,10 @@ function hitung() {
     resultStatementOutput.style.display = "block";
   }
 }
-
+let icon = document.getElementById("sun-icon");
+const body = document.body.classList;
 function toggleDarkTheme() {
-  let icon = document.getElementById("sun-icon");
-  document.body.classList.toggle("dark-theme");
+  body.toggle("dark-theme");
   if (document.body.classList.contains("dark-theme")) {
     icon.src = "assets/moon.png";
   } else {
