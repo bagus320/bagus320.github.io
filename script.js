@@ -11,31 +11,35 @@ function hitung() {
 
   if (unitCount == "under8") {
     result = (factor * dm) / (parseInt(factor) + 12);
-    result = result.toFixed(2) + " Mg";
   } else if (unitCount == "above8") {
-    result = (factor * dm) / 20 ;
-    result = result.toFixed(2) + " Mg";
+    result = (factor * dm) / 20;
   } else if (unitCount == "weight") {
     result = (factor * dm) / 70;
-    result = result.toFixed(2) + " Mg";
   } else if (unitCount == "percent") {
     result = (dl * 100) / dm;
-    result = result.toFixed(2) + " %";
-    fixedResult = parseFloat(result.replace("%", ""));
-    if (fixedResult > 100) {
+    if (result > 100) {
       resultStatement = "Overdosis Cokk!!";
-    } else if (fixedResult >= 80 && fixedResult <= 100) {
+    } else if (result >= 80 && result <= 100) {
       resultStatement = "Bolehlah";
-    } else if (fixedResult < 79) {
+    } else if (result < 79) {
       resultStatement = "Kurang Dosis!!";
     } else {
       resultStatement = "kosong njirr";
     }
   } else if (unitCount == "month") {
     result = (factor * dm) / 150;
-    result = result.toFixed(2) + " Mg";
   } else {
     result = "0";
+  }
+  if (
+    unitCount == "under8" ||
+    unitCount == "above8" ||
+    unitCount == "weight" ||
+    unitCount == "month"
+  ) {
+    result = result.toFixed(2) + " Mg";
+  } else {
+    result = result.toFixed(2) + " %";
   }
   fixedResult = parseFloat(result.replace("%", ""));
   if (fixedResult > 0) {
