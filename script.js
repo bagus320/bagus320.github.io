@@ -57,14 +57,32 @@ function hitung() {
 }
 let icon = document.getElementById("sun-icon");
 const body = document.body.classList;
+const imageCache = {};
+
 function toggleDarkTheme() {
   body.toggle("dark-theme");
+
   if (document.body.classList.contains("dark-theme")) {
-    icon.src = "assets/moon.png";
+    if (imageCache["moon"]) {
+      icon.src = imageCache["moon"];
+    } else {
+      const moonImage = new Image();
+      moonImage.src = "assets/moon.png";
+      imageCache["moon"] = moonImage.src;
+      icon.src = moonImage.src;
+    }
   } else {
-    icon.src = "assets/sun_drawing.png";
+    if (imageCache["sun"]) {
+      icon.src = imageCache["sun"];
+    } else {
+      const sunImage = new Image();
+      sunImage.src = "assets/sun_drawing.png";
+      imageCache["sun"] = sunImage.src;
+      icon.src = sunImage.src;
+    }
   }
 }
+
 if (
   window.matchMedia &&
   window.matchMedia("(prefers-color-scheme:dark)").matches
