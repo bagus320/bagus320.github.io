@@ -24,7 +24,7 @@
     <title>Kalkulator Dosis</title>
   </head>
 
-  <body>
+  <body">
     <div class="theme-wrapper">
       <img
         src="assets/sun_drawing.png"
@@ -38,32 +38,43 @@
     </div>
 
     <div class="dose_calc animate__animated">
-      <div class="normal-dose animate__animated animate__backInLeft">
-        <label for="dosisLazim">Masukan Dosis Berdasarkan Resep</label>
-      </div>
-      <div class="dose-value animate__animated animate__backInUp">
-        <input type="number" id="dl" />
-      </div>
-      <div class="max-dose animate__animated animate__backInDown">
-        <label for="inputValue">Masukan Dosis Maksimum</label>
-      </div>
-      <div class="number-value animate__animated animate__backInUp">
-        <input type="number" id="dm" />
-      </div>
-      <div class="unit animate__animated animate__lightSpeedInLeft">
-        <label for="unitCount">Umur/Berat Badan Anak</label>
-      </div>
-      <div class="unit-value">
+      <div class="selector-container">
+        <label class="option-label" for="option">Pilih Mode Perhitungan</label>
+        <br />
         <select
-          class="animate__animated animate__lightSpeedInRight"
+          class="animate__animated animate__lightSpeedInRight selector"
           id="unitCount"
+          onclick="autoHide()"
         >
+          <option value="empty"></option>
           <option value="under8">Dibawah 8 Tahun</option>
           <option value="above8">Diatas 8 Tahun</option>
           <option value="weight">Berat Badan Anak</option>
           <option value="month">Berdasarkan Umur Anak Dalam Bulan</option>
           <option value="percent">Persentase Kesembuhan Dosis</option>
         </select>
+      </div>
+
+      <div class="normal-dose animate__animated animate__backInLeft">
+        <label id="dosisLazim" for="dosisLazim"
+          > Dosis Yang Diresepkan</label
+        >
+      </div>
+      <div class="dose-value animate__animated animate__backInUp">
+        <input type="number" id="dl" />
+      </div>
+      <div class="max-dose animate__animated animate__backInDown">
+        <label id="dmLabel" for="inputValue"
+          > Dosis Maksimum (Menurut Farmakope)</label
+        >
+      </div>
+      <div class="number-value animate__animated animate__backInUp">
+        <input type="number" id="dm" />
+      </div>
+      <div class="unit animate__animated animate__lightSpeedInLeft">
+        <label id="unitLabel" for="unitCount">Umur/Berat Badan Anak</label>
+      </div>
+      <div id="unitInput" class="unit-value">
         <input
           class="animate__animated animate__lightSpeedInLeft"
           type="number"

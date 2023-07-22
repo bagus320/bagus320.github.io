@@ -1,7 +1,52 @@
+const dlLabel = document.getElementById("dosisLazim");
+const dlInput = document.getElementById("dl");
+const dmInput = document.getElementById("dm");
+const dmLabel = document.getElementById("dmLabel");
+const selectorLabel = document.getElementById("option-label");
+const unitLabel = document.getElementById("unitLabel");
+const unitInput = document.getElementById("factor");
+const button = document.getElementById("operation");
+
+function autoHide() {
+  const selector = document.getElementById("unitCount").value;
+  let show = `display: inline-block;
+  text-align: center;`;
+  let hide = `display: none;`;
+
+  switch (selector) {
+    case "under8":
+      unitLabel.style = show;
+      unitInput.style = show;
+      unitLabel.innerHTML = "Umur Anak(Dibawah 8 Tahun)";
+      break;
+    case "above8":
+      unitLabel.style = show;
+      unitInput.style = show;
+      unitLabel.innerHTML = "Umur Anak(Diatas 8 Tahun)";
+      break;
+    case "weight":
+      unitLabel.style = show;
+      unitInput.style = show;
+      unitLabel.innerHTML = "Berat Badan Anak";
+      break;
+    case "month":
+      unitLabel.style = show;
+      unitInput.style = show;
+      unitLabel.innerHTML = "Umur Anak(Dalam Bulan)";
+      break;
+
+    case "percent":
+      unitLabel.style = hide;
+      unitInput.style = hide;
+      break;
+
+    default:
+  }
+}
+
 let result;
 let resultStatement;
 let fixedResult;
-
 function hitung() {
   const dl = document.getElementById("dl").value;
   const dm = document.getElementById("dm").value;
