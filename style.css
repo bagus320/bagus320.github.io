@@ -42,6 +42,7 @@ body {
 
 .dose_calc {
   width: 80vw;
+  max-width: fit-content;
   height: fit-content;
   margin: 20px auto;
   background-color: var(--primary-background);

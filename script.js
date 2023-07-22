@@ -18,26 +18,31 @@ function autoHide() {
       unitLabel.style = show;
       unitInput.style = show;
       unitLabel.innerHTML = "Umur Anak(Dibawah 8 Tahun)";
+      dmLabel.innerHTML = "Dosis Maksimum Dewasa (Farmakope)";
       break;
     case "above8":
       unitLabel.style = show;
       unitInput.style = show;
       unitLabel.innerHTML = "Umur Anak(Diatas 8 Tahun)";
+      dmLabel.innerHTML = "Dosis Maksimum Dewasa (Farmakope)";
       break;
     case "weight":
       unitLabel.style = show;
       unitInput.style = show;
       unitLabel.innerHTML = "Berat Badan Anak";
+      dmLabel.innerHTML = "Dosis Maksimum Dewasa (Farmakope)";
       break;
     case "month":
       unitLabel.style = show;
       unitInput.style = show;
       unitLabel.innerHTML = "Umur Anak(Dalam Bulan)";
+      dmLabel.innerHTML = "Dosis Maksimum Dewasa (Farmakope)";
       break;
 
     case "percent":
       unitLabel.style = hide;
       unitInput.style = hide;
+      dmLabel.innerHTML = "Dosis Lazim";
       break;
 
     default:
@@ -54,28 +59,40 @@ function hitung() {
   let factor = document.getElementById("factor").value;
   const resultElement = document.getElementById("result");
 
-  if (unitCount == "under8") {
-    result = (factor * dm) / (parseInt(factor) + 12);
-  } else if (unitCount == "above8") {
-    result = (factor * dm) / 20;
-  } else if (unitCount == "weight") {
-    result = (factor * dm) / 70;
-  } else if (unitCount == "percent") {
-    result = (dl * 100) / dm;
-    if (result > 100) {
-      resultStatement = "Overdosis Cokk!!";
-    } else if (result >= 80 && result <= 100) {
-      resultStatement = "Bolehlah";
-    } else if (result < 79) {
-      resultStatement = "Kurang Dosis!!";
-    } else {
-      resultStatement = "kosong njirr";
-    }
-  } else if (unitCount == "month") {
-    result = (factor * dm) / 150;
-  } else {
-    result = "0";
+  switch (unitCount) {
+    case "under8":
+      result = (factor * dm) / (parseInt(factor) + 12);
+      break;
+
+    case "above8":
+      result = (factor * dm) / 20;
+      break;
+
+    case "weight":
+      result = (factor * dm) / 70;
+      break;
+
+    case "percent":
+      result = (dl * 100) / dm;
+      if (result > 100) {
+        resultStatement = "Overdosis Cokk!!";
+      } else if (result >= 80 && result <= 100) {
+        resultStatement = "Bolehlah";
+      } else if (result < 79) {
+        resultStatement = "Kurang Dosis!!";
+      } else {
+        resultStatement = "kosong njirr";
+      }
+      break;
+
+    case "month":
+      result = (factor * dm) / 150;
+      break;
+
+    default:
+      result = "0";
   }
+
   if (
     unitCount == "under8" ||
     unitCount == "above8" ||
