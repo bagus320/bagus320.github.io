@@ -37,14 +37,13 @@
       />
     </div>
 
-    <div class="dose_calc animate__animated">
+    <div class="dose_calc animate__animated" onclick="autoHide()">
       <div class="selector-container">
         <label class="option-label" for="option">Pilih Mode Perhitungan</label>
         <br />
         <select
           class="animate__animated animate__lightSpeedInRight selector"
           id="unitCount"
-          onclick="autoHide()"
         >
           <option value="empty"></option>
           <option value="under8">Dibawah 8 Tahun</option>
@@ -56,16 +55,14 @@
       </div>
 
       <div class="normal-dose animate__animated animate__backInLeft">
-        <label id="dosisLazim" for="dosisLazim"
-          > Dosis Yang Diresepkan</label
-        >
+        <label id="dosisLazim" for="dosisLazim"> Dosis Yang Diresepkan</label>
       </div>
       <div class="dose-value animate__animated animate__backInUp">
         <input type="number" id="dl" />
       </div>
       <div class="max-dose animate__animated animate__backInDown">
-        <label id="dmLabel" for="inputValue"
-          > Dosis Maksimum Dewasa (Farmakope)</label
+        <label id="dmLabel" for="inputValue">
+          Dosis Maksimum Dewasa (Farmakope)</label
         >
       </div>
       <div class="number-value animate__animated animate__backInUp">

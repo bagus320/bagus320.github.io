@@ -1,14 +1,14 @@
-const dlLabel = document.getElementById("dosisLazim");
-const dlInput = document.getElementById("dl");
-const dmInput = document.getElementById("dm");
-const dmLabel = document.getElementById("dmLabel");
-const selectorLabel = document.getElementById("option-label");
-const unitLabel = document.getElementById("unitLabel");
-const unitInput = document.getElementById("factor");
-const button = document.getElementById("operation");
+const dlLabel = document.querySelector("#dosisLazim");
+const dlInput = document.querySelector("#dl");
+const dmInput = document.querySelector("#dm");
+const dmLabel = document.querySelector("#dmLabel");
+const selectorLabel = document.querySelector("#option-label");
+const unitLabel = document.querySelector("#unitLabel");
+const unitInput = document.querySelector("#factor");
+const button = document.querySelector("#operation");
 
 function autoHide() {
-  const selector = document.getElementById("unitCount").value;
+  const selector = document.querySelector("#unitCount").value;
   let show = `display: inline-block;
   text-align: center;`;
   let hide = `display: none;`;
@@ -42,10 +42,11 @@ function autoHide() {
     case "percent":
       unitLabel.style = hide;
       unitInput.style = hide;
-      dmLabel.innerHTML = "Dosis Lazim";
+      dmLabel.innerHTML = "Dosis Maksimum";
       break;
 
     default:
+      break;
   }
 }
 
@@ -53,12 +54,11 @@ let result;
 let resultStatement;
 let fixedResult;
 function hitung() {
-  const dl = document.getElementById("dl").value;
-  const dm = document.getElementById("dm").value;
-  const unitCount = document.getElementById("unitCount").value;
-  let factor = document.getElementById("factor").value;
-  const resultElement = document.getElementById("result");
-
+  const dl = parseFloat(document.querySelector("#dl").value);
+  const dm = parseFloat(document.querySelector("#dm").value);
+  const unitCount = document.querySelector("#unitCount").value;
+  const factor = parseFloat(document.querySelector("#factor").value);
+  const resultElement = document.querySelector("#result");
   switch (unitCount) {
     case "under8":
       result = (factor * dm) / (parseInt(factor) + 12);
@@ -93,23 +93,24 @@ function hitung() {
       result = "0";
   }
 
-  if (
-    unitCount == "under8" ||
-    unitCount == "above8" ||
-    unitCount == "weight" ||
-    unitCount == "month"
-  ) {
-    result = result.toFixed(2) + " Mg";
-  } else {
-    result = result.toFixed(2) + " %";
+  switch (unitCount) {
+    case "under8":
+    case "above8":
+    case "weight":
+    case "month":
+      result = result.toFixed(2) + " Mg";
+      break;
+    default:
+      result = result.toFixed(2) + " %";
   }
+
   fixedResult = parseFloat(result.replace("%", ""));
   if (fixedResult > 0) {
     resultElement.innerText = result;
   } else {
     resultElement.innerText = "Diisi yang benerr!!";
   }
-  const resultStatementOutput = document.getElementById("result-statement");
+  const resultStatementOutput = document.querySelector("#result-statement");
   resultStatementOutput.innerText = resultStatement;
   if (unitCount != "percent") {
     resultStatementOutput.style.display = "none";
@@ -117,6 +118,7 @@ function hitung() {
     resultStatementOutput.style.display = "block";
   }
 }
+
 let icon = document.getElementById("sun-icon");
 const body = document.body.classList;
 const imageCache = {};
