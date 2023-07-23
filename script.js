@@ -198,10 +198,4 @@ function toggleDarkTheme() {
   }
 }
 
-//memanggil fungsi toggleDarkTheme jika user menggunakan settingan default darkmode
-if (
-  window.matchMedia &&
-  window.matchMedia("(prefers-color-scheme:dark)").matches
-) {
-  toggleDarkTheme();
-}
+toggleDarkTheme();
