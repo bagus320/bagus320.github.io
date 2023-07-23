@@ -41,8 +41,8 @@ body {
 }
 
 .dose_calc {
-  width: 80vw;
-  max-width: fit-content;
+  width: fit-content;
+  max-width: 78vw;
   height: fit-content;
   margin: 20px auto;
   background-color: var(--primary-background);
@@ -193,7 +193,8 @@ body .dose_calc .statement-box #result-statement {
 body .dose_calc #watermark {
   display: inline-block;
   font-family: "Pacifico", cursive;
-  font-size: 25px;
+  font-weight: 400;
+  font-size: 20px;
   overflow: hidden;
   white-space: nowrap;
   width: 0;
@@ -224,10 +225,16 @@ body .dose_calc #watermark {
 .show {
   display: inline-block;
   text-align: center;
+
+  animation: bounce;
+  animation-duration: 1s;
 }
 
 .hide {
   display: none;
+
+  animation: bounce;
+  animation-duration: 1s;
 }
 .res-exp {
   text-align: center;

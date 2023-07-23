@@ -185,7 +185,7 @@ function hitung() {
 //caching element untuk function toggleDarkTheme
 let icon = document.querySelector("#sun-icon");
 const body = document.body.classList;
-
+toggleDarkTheme();
 function toggleDarkTheme() {
   //menambahkan class "dark-theme" pada element body
   body.toggle("dark-theme");
@@ -197,5 +197,3 @@ function toggleDarkTheme() {
     icon.src = "assets/sun_drawing.png";
   }
 }
-
-toggleDarkTheme();
