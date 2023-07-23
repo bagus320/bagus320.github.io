@@ -203,8 +203,12 @@ body .dose_calc #watermark {
   animation-fill-mode: forwards;
 }
 @keyframes typing {
-  from {width: 0}
-  to {width: 100%;}
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 .selector-container {
   margin-bottom: 1.5rem;
@@ -216,4 +220,18 @@ body .dose_calc #watermark {
 .selector {
   text-align: center;
   margin-top: 1rem;
+}
+.show {
+  display: inline-block;
+  text-align: center;
+}
+
+.hide {
+  display: none;
+}
+.res-exp {
+  text-align: center;
+  padding: 5px;
+  margin-top: 20px;
+  font-size: 20px;
 }

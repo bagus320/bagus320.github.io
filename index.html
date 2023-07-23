@@ -24,7 +24,7 @@
     <title>Kalkulator Dosis</title>
   </head>
 
-  <body>
+  <body onload="autoHide()">
     <div class="theme-wrapper">
       <img
         src="assets/sun_drawing.png"
@@ -37,13 +37,14 @@
       />
     </div>
 
-    <div class="dose_calc animate__animated" onclick="autoHide()">
+    <div class="dose_calc animate__animated">
       <div class="selector-container">
         <label class="option-label" for="option">Pilih Mode Perhitungan</label>
         <br />
         <select
           class="animate__animated animate__lightSpeedInRight selector"
           id="unitCount"
+          onchange="autoHide()"
         >
           <option value="empty"></option>
           <option value="under8">Dibawah 8 Tahun</option>
@@ -69,7 +70,9 @@
         <input type="number" id="dm" />
       </div>
       <div class="unit animate__animated animate__lightSpeedInLeft">
-        <label id="unitLabel" for="unitCount">Umur/Berat Badan Anak</label>
+        <label class="default" id="unitLabel" for="unitCount"
+          >Umur/Berat Badan Anak</label
+        >
       </div>
       <div id="unitInput" class="unit-value">
         <input
@@ -82,12 +85,12 @@
         <button
           class="animate__animated animate__bounceInUp"
           id="operation"
-          onfocus="hitung()"
+          onclick="hitung()"
         >
           Hitung
         </button>
       </div>
-
+      <div class="res-exp"></div>
       <div id="result"></div>
       <div class="statement-box">
         <span id="result-statement"></span>
