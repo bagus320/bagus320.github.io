@@ -1,4 +1,5 @@
 // menyimpan/caching element untuk function autoHide
+const mainBody = document.body;
 const dlLabel = document.querySelector("#dosisLazim");
 const dlInput = document.querySelector("#dl");
 const dmInput = document.querySelector("#dm");
@@ -33,10 +34,11 @@ const labelMap = {
   },
 };
 
-//add event listener to the selector element
-// selector.addEventListener("touchstart", autoHide);
+// function autoHide yang dipanggil dengan event handler onload pada element body
+mainBody, addEventListener("load", autoHide);
+// function autoHide yang dipanggil dengan event handler onchange pada element selector
+selector.addEventListener("change", autoHide);
 
-// function autoHide yang dipanggil dengan event handler onclick pada element selector
 function autoHide() {
   // mengambil value selector
   const selector = document.querySelector("#unitCount").value;
@@ -69,7 +71,7 @@ function autoHide() {
       dmInput.classList.remove("hide");
       button.classList.remove("hide");
 
-      //mengubah isi text pada label menggunakan object yang dideklarasikan diatas
+      //mengubah isi text pada label menggunakan object properties yang dideklarasikan diatas
       unitLabel.innerHTML = labelMap[selector].unitLabel;
       dmLabel.innerHTML = labelMap[selector].dmLabel;
       break;
@@ -127,7 +129,7 @@ function hitung() {
     case "percent":
       result = (dl * 100) / dm;
 
-      //menambah string pada variable resultStatement berdasarkan kondisional hasil dari kalkulasi diatas
+      //menambah string pada variable resultStatement menggunakan kondisional berdasarkan hasil dari kalkulasi diatas
       if (result > 100) {
         resultStatement = "Overdosis Cokk!!";
       } else if (result >= 80 && result <= 100) {
@@ -190,7 +192,7 @@ function toggleDarkTheme() {
   //menambahkan class "dark-theme" pada element body
   body.toggle("dark-theme");
 
-  //akan merubah clickable icon sesuai theme yang dipilih dan menyimpan icon dalam cache
+  //akan merubah clickable icon sesuai theme yang dipilih
   if (document.body.classList.contains("dark-theme")) {
     icon.src = "assets/moon.png";
   } else {

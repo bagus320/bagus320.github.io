@@ -24,7 +24,7 @@
     <title>Kalkulator Dosis</title>
   </head>
 
-  <body onload="autoHide()">
+  <body>
     <div class="theme-wrapper">
       <img
         src="assets/sun_drawing.png"
@@ -44,7 +44,6 @@
         <select
           class="animate__animated animate__lightSpeedInRight selector"
           id="unitCount"
-          onchange="autoHide()"
         >
           <option value="empty"></option>
           <option value="under8">Dibawah 8 Tahun</option>
@@ -66,7 +65,7 @@
       </div>
       <div class="dose-value">
         <input
-          class="animate__animated animate__backInRight"
+          class="animate__animated animate__lightSpeedInRight"
           type="number"
           id="dl"
         />
