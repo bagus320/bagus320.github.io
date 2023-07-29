@@ -9,6 +9,8 @@ const unitLabel = document.querySelector("#unitLabel");
 const unitInput = document.querySelector("#factor");
 const selector = document.querySelector("#unitCount");
 const button = document.querySelector("#operation");
+const resultStatementOutput = document.querySelector("#result-statement");
+const resultElement = document.querySelector("#result");
 
 //deklarasi object untuk label yang akan ditampilkan
 const labelMap = {
@@ -105,13 +107,14 @@ const labelBuilder = {
 };
 
 //fungsi utama yang akan menghitung hasil dari input,fungsi dipanggil oleh tombol dengan id operation menggunakan onclick event handler
-function hitung() {
+
+const hitung = () => {
   //mengambil input dari semua input box
   const dl = parseFloat(document.querySelector("#dl").value);
   const dm = parseFloat(document.querySelector("#dm").value);
   const unitCount = document.querySelector("#unitCount").value;
   const factor = parseFloat(document.querySelector("#factor").value);
-  const resultElement = document.querySelector("#result");
+
   switch (unitCount) {
     //melakukan kalkulasi dengan case yang diambil dari value pada setiap input
     case "under8":
@@ -130,15 +133,15 @@ function hitung() {
       result = (dl * 100) / dm;
 
       //menambah string pada variable resultStatement menggunakan kondisional berdasarkan hasil dari kalkulasi diatas
-      if (result > 100) {
-        resultStatement = "Overdosis Cokk!!";
-      } else if (result >= 80 && result <= 100) {
-        resultStatement = "Bolehlah";
-      } else if (result < 79) {
-        resultStatement = "Kurang Dosis!!";
-      } else {
-        resultStatement = "kosong njirr";
-      }
+      resultStatementOutput.innerText =
+        result > 100
+          ? "Overdosis Cokk!!"
+          : result >= 80 && result <= 100
+          ? "Bolehlah"
+          : result < 79
+          ? "Kurang Dosis!!"
+          : "kosong njirr";
+
       break;
 
     case "month":
@@ -154,35 +157,39 @@ function hitung() {
   const expResult = expLabelMaker(unitCount, factor);
 
   //menambahkan string dari resExp ke element expResult
-  resExp.innerHTML = expResult;
+  // resExp.classList.remove("hide");
+  // resExp.innerHTML = expResult;
+  resExp.innerHTML = isNaN(factor)
+    ? resExp.classList.add("hide")
+    : factor == "percent"
+    ? resExp.classList.remove("hide").expResult
+    : (resExp.classList.remove("hide"), expResult);
 
-  //if else conditional untuk menambahkan unit satuan pada element result
-  if (unitCount != "percent") {
-    result = result.toFixed(2) + " Mg";
-  } else {
-    result = result.toFixed(2) + " %";
-  }
+  //ternary operator untuk menambahkan unit satuan pada element result
+
+  result =
+    unitCount != "percent"
+      ? result.toFixed(2) + " Mg"
+      : result.toFixed(2) + " %";
 
   //menghilangkan string dan mengubah variable result menjadi integer
   fixedResult = parseFloat(result.replace("%", ""));
-  if (fixedResult > 0) {
-    resultElement.innerText = result;
-  } else {
-    //Memasukan String pada element resultElement
-    resultElement.innerText = "Diisi yang benerr!!";
-  }
+  //mengecek value dari variable result
+  resultElement.classList.remove("hide");
+  resultElement.innerHTML = fixedResult > 0 ? result : "Diisi yang benerr!!!";
 
-  //mengambil element result-statement dari index html
-  const resultStatementOutput = document.querySelector("#result-statement");
-  // Mengeluarkan string dari variable resultStatement dan memasukannya kedalam element html resultStatementOutput
-  resultStatementOutput.innerText = resultStatement;
-  if (unitCount != "percent") {
-    //menyembunyikan element resultStatementOutput
-    resultStatementOutput.style.display = "none";
-  } else {
-    resultStatementOutput.style.display = "block";
-  }
-}
+  //menampilkan statement dari hasil kalkulasi persen
+  resultStatementOutput.classList.remove("hide");
+};
+//event listener untuk button yang akan menjalankan fungsi utama
+button.addEventListener("click", hitung);
+
+const hideState = () => {
+  resExp.classList.add("hide");
+  resultElement.classList.add("hide");
+  resultStatementOutput.classList.add("hide");
+};
+selector.addEventListener("change", hideState);
 
 //caching element untuk function toggleDarkTheme
 let icon = document.querySelector("#sun-icon");
@@ -193,7 +200,7 @@ function toggleDarkTheme() {
   body.toggle("dark-theme");
 
   //akan merubah clickable icon sesuai theme yang dipilih
-  if (document.body.classList.contains("dark-theme")) {
+  if (body.contains("dark-theme")) {
     icon.src = "assets/moon.png";
   } else {
     icon.src = "assets/sun_drawing.png";
