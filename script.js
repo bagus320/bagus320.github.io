@@ -99,10 +99,12 @@ const resExp = document.querySelector(".res-exp");
 
 //object yang akan digunakan untuk menambah text pada element resExp
 const labelBuilder = {
-  under8: (factor) => `Dm Anak Dengan Umur ${factor} Tahun Adalah: `,
-  above8: (factor) => `Dm Anak Dengan Umur ${factor} Tahun Adalah: `,
-  weight: (factor) => `Dm Anak Dengan Berat ${factor} Kg Adalah: `,
-  month: (factor) => `Dm Anak Dengan Umur ${factor} Bulan Adalah: `,
+  under8: (factor) =>
+    `Dosis Maksimum Anak Dengan Umur ${factor} Tahun Adalah: `,
+  above8: (factor) =>
+    `Dosis Maksimum Anak Dengan Umur ${factor} Tahun Adalah: `,
+  weight: (factor) => `Dosis Maksimum Anak Dengan Berat ${factor} Kg Adalah: `,
+  month: (factor) => `Dosis Maksimum Anak Dengan Umur ${factor} Bulan Adalah: `,
   percent: () => "Persentase dosis adalah: ",
 };
 
@@ -162,7 +164,7 @@ const hitung = () => {
   resExp.innerHTML = isNaN(factor)
     ? resExp.classList.add("hide")
     : factor == "percent"
-    ? resExp.classList.remove("hide").expResult
+    ? (resExp.classList.remove("hide"), expResult)
     : (resExp.classList.remove("hide"), expResult);
 
   //ternary operator untuk menambahkan unit satuan pada element result
@@ -184,6 +186,7 @@ const hitung = () => {
 //event listener untuk button yang akan menjalankan fungsi utama
 button.addEventListener("click", hitung);
 
+//menyembunyikan string statement saat mode perhitungan diubah
 const hideState = () => {
   resExp.classList.add("hide");
   resultElement.classList.add("hide");
