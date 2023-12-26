@@ -36,9 +36,9 @@ const labelMap = {
   },
 };
 
-// function autoHide yang dipanggil dengan event handler onload pada element body
-mainBody, addEventListener("load", autoHide);
-// function autoHide yang dipanggil dengan event handler onchange pada element selector
+// function autoHide yang dipanggil ketika halaman web sudah termuat
+autoHide();
+// function autoHide yang dipanggil ketika nilai pada selector berubah
 selector.addEventListener("change", autoHide);
 
 function autoHide() {
@@ -62,8 +62,10 @@ function autoHide() {
       //mengubah isi text pada label menggunakan object yang dideklarasikan diatas
       unitLabel.innerHTML = labelMap[selector].unitLabel;
       dmLabel.innerHTML = labelMap[selector].dmLabel;
+      if (selector == "month") {
+        unitInput.setAttribute("placeholder", "Jumlah umur dalam bulan");
+      }
       break;
-
     case "percent":
       //menambahkan dan menghapus element menggunakan css class
       unitInput.classList.add("hide");
@@ -159,8 +161,10 @@ const hitung = () => {
   const expResult = expLabelMaker(unitCount, factor);
 
   //menambahkan string dari resExp ke element expResult
-  // resExp.classList.remove("hide");
-  // resExp.innerHTML = expResult;
+  // resExp.innerHTML = isNaN(factor)
+  //   ? resExp.classList.add("hide")
+  //   : (resExp.classList.remove("hide"), expResult);
+
   resExp.innerHTML = isNaN(factor)
     ? resExp.classList.add("hide")
     : factor == "percent"
