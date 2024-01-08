@@ -62,8 +62,12 @@ function autoHide() {
       //mengubah isi text pada label menggunakan object yang dideklarasikan diatas
       unitLabel.innerHTML = labelMap[selector].unitLabel;
       dmLabel.innerHTML = labelMap[selector].dmLabel;
-      if (selector == "month") {
-        unitInput.setAttribute("placeholder", "Jumlah umur dalam bulan");
+      if (selector == "under8" || selector == "above8") {
+        unitInput.setAttribute("placeholder", "Dalam Satuan Tahun");
+      } else if (selector == "weight") {
+        unitInput.setAttribute("placeholder", "Dalam Satuan KG/Kilogram");
+      } else if (selector == "month") {
+        unitInput.setAttribute("placeholder", "Dalam Satuan Bulan");
       }
       break;
     case "percent":
@@ -78,6 +82,9 @@ function autoHide() {
       //mengubah isi text pada label menggunakan object properties yang dideklarasikan diatas
       unitLabel.innerHTML = labelMap[selector].unitLabel;
       dmLabel.innerHTML = labelMap[selector].dmLabel;
+      if (selector == "percent") {
+        unitInput.removeAttribute("placeholder");
+      }
       break;
 
     default:
