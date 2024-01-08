@@ -143,6 +143,8 @@ const hitung = () => {
     case "percent":
       result = (dl * 100) / dm;
 
+      resultStatementOutput.classList.remove("hide");
+
       //menambah string pada variable resultStatement menggunakan kondisional berdasarkan hasil dari kalkulasi diatas
       resultStatementOutput.innerText =
         result > 100
@@ -167,7 +169,7 @@ const hitung = () => {
   const expLabelMaker = (unitCount, factor) => labelBuilder[unitCount](factor);
   const expResult = expLabelMaker(unitCount, factor);
 
-  //menambahkan string dari resExp ke element expResult
+  // menambahkan string dari resExp ke element expResult
   // resExp.innerHTML = isNaN(factor)
   //   ? resExp.classList.add("hide")
   //   : (resExp.classList.remove("hide"), expResult);
@@ -176,7 +178,7 @@ const hitung = () => {
     ? resExp.classList.add("hide")
     : factor == "percent"
     ? (resExp.classList.remove("hide"), expResult)
-    : (resExp.classList.remove("hide"), expResult);
+    : (resExp.classList.add("hide"), expResult);
 
   //ternary operator untuk menambahkan unit satuan pada element result
 
@@ -192,7 +194,6 @@ const hitung = () => {
   resultElement.innerHTML = fixedResult > 0 ? result : "Diisi yang benerr!!!";
 
   //menampilkan statement dari hasil kalkulasi persen
-  resultStatementOutput.classList.remove("hide");
 };
 //event listener untuk button yang akan menjalankan fungsi utama
 button.addEventListener("click", hitung);
